@@ -24,6 +24,14 @@
             const title = "Welcome to my website"
             const sub = "this is a website for learning react"
             const address = "https://www.google.com"
+
+            // const handleClick = (e) =>{
+            //     console.log('you clicked me')
+            //     console.log('The site tile is',title)
+            //     console.log(e)
+            // }
+
+
             return (
                 <div className="banner">
                     <h2>{title.toUpperCase()}</h2>
@@ -31,7 +39,11 @@
                     <p>Today's date is : {new Date().toDateString()}</p>
                     <p>Random number : {Math.random() * 100}</p>
 
-                    <a href={address}>Visit Google</a>
+                    <a href={address}>Visit Google</a><br/>
+                    <button onClick={(e) => {
+                        console.log('Hello')
+                        console.log(e)
+                    }}>Click me</button>
                 </div>
             )
         }
