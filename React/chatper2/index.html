@@ -21,9 +21,14 @@
 
     <script type="text/babel">
         const Banner = () => {
+            const title = "Welcome to my website";
+            const sub = "this is a website for learning react";
             return (
-                <div>
-                    <p>Banner</p>
+                <div className="banner">
+                    <h2>{title.toUpperCase()}</h2>
+                    <p>{sub}</p>
+                    <p>Today's date is : {new Date().toDateString()}</p>
+                    <p>Random number : {Math.random() * 100}</p>
                 </div>
             )
         }
