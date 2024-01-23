@@ -22,8 +22,13 @@ function App() {
   return (
     <div className="App">
       <div>
+       {showEvents && 
         <button onClick={() =>{setShowEvents(false)}}>Hide Events</button>
-        <button onClick={() => {setShowEvents(true)}}>Show Events</button>
+       }
+        {
+          !showEvents &&
+          <button onClick={() => {setShowEvents(true)}}>Show Events</button>
+        }
       </div>
       {showEvents && events.map((event, index) => (
         <div key={event.id}>
