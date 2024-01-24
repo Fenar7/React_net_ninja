@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import {useState} from 'react';
+import Title from './components/title';
+import React from 'react ';
 import './App.css';
 
 function App() {
@@ -19,8 +21,12 @@ function App() {
     console.log(id)
   }
 
+  const subtitle = "All the lates events in mario land"
+
   return (
     <div className="App">
+      <Title title="Events in your area" subtitle={subtitle}/>   
+      <Title title="Another title" subtitle="another subtitle"/>   
       <div>
        {showEvents && 
         <button onClick={() =>{setShowEvents(false)}}>Hide Events</button>
@@ -31,10 +37,10 @@ function App() {
         }
       </div>
       {showEvents && events.map((event, index) => (
-        <div key={event.id}>
+        <React.Fragment key={event.id}>
           <h2>{index} -- {event.title}</h2>
           <button onClick={() => handleClick(event.id)}>Delete Event</button>
-        </div>
+        </React.Fragment>
       ))}
     </div>
   )
