@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import {useState} from 'react';
 import Title from './components/title';
-import React from 'react ';
+import React from 'react';
+import Modal from './components/modal'
 import './App.css';
 
 function App() {
+  const [showModal,setModal] = useState(false)
   const [showEvents,setShowEvents] = useState(true)
   const [events,setEvents] = useState([
     {title:"marios birthday bash", id:1},
@@ -19,6 +21,16 @@ function App() {
       })
     })
     console.log(id)
+  }
+
+  console.log(showModal)
+
+  const handleClose = () =>{
+    setModal(false)
+  }
+
+  const handleOpen = () => {
+    setModal(true)
   }
 
   const subtitle = "All the lates events in mario land"
@@ -42,6 +54,13 @@ function App() {
           <button onClick={() => handleClick(event.id)}>Delete Event</button>
         </React.Fragment>
       ))}
+
+      {showModal && <Modal handleClose={handleClose}>
+        <h2>10% Off Coupoun Code</h2>
+        <p>Use the code Ninja10 at the checkout.</p>
+      </Modal>}
+
+      <button onClick={handleOpen}>Show Modal</button>
     </div>
   )
 }
