@@ -3,9 +3,11 @@ import {useState} from 'react';
 import Title from './components/title';
 import React from 'react';
 import Modal from './components/modal'
+import EventList from './components/eventlist'
 import './App.css';
 
 function App() {
+  const [isSalesModal ,setSalesModal] = useState()
   const [showModal,setModal] = useState(false)
   const [showEvents,setShowEvents] = useState(true)
   const [events,setEvents] = useState([
@@ -48,19 +50,14 @@ function App() {
           <button onClick={() => {setShowEvents(true)}}>Show Events</button>
         }
       </div>
-      {showEvents && events.map((event, index) => (
-        <React.Fragment key={event.id}>
-          <h2>{index} -- {event.title}</h2>
-          <button onClick={() => handleClick(event.id)}>Delete Event</button>
-        </React.Fragment>
-      ))}
+      {showEvents && <EventList events={events} handleClick={handleClick} />}
 
-      {showModal && <Modal handleClose={handleClose}>
+      {showModal && <Modal handleClose={handleClose} isSalesModal={false}>
         <h2>10% Off Coupoun Code</h2>
         <p>Use the code Ninja10 at the checkout.</p>
       </Modal>}
 
-      <button onClick={handleOpen}>Show Modal</button>
+      <button onClick={handleOpen} className={isSalesModal ? "salesbtn" : "sale-bad"}>Show Modal</button>
     </div>
   )
 }
